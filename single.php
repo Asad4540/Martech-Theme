@@ -39,7 +39,7 @@
 
 <!-- Sidebar -->
 <?php
-$selected_sidebar = get_post_meta( get_the_ID(), '_ittech_sidebar', true ); // Get the selected sidebar
+$selected_sidebar = get_post_meta( get_the_ID(), '_martech_sidebar', true ); // Get the selected sidebar
 
 // Check if a sidebar is selected and it is not set to 'none'
 if ( !empty( $selected_sidebar ) && $selected_sidebar != 'none' && is_active_sidebar( $selected_sidebar ) ) : ?>

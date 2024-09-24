@@ -23,7 +23,7 @@ class Custom_Post_Grid_Widget extends Widget_Base {
 
    
     public function get_categories() {
-        return [ 'a_ittech-addons' ];
+        return [ 'a_martech-addons' ];
     }
 
 

@@ -20,7 +20,7 @@ class Post_Grid_Widget extends Widget_Base {
         return 'eicon-posts-ticker';
     }
     public function get_categories() {
-        return [ 'a_ittech-addons' ];
+        return [ 'a_martech-addons' ];
     }
 
     public function _register_controls() {

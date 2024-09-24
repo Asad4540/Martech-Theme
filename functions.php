@@ -1,25 +1,25 @@
 <?php
 /**
- * ittech functions and definitions
+ * martech functions and definitions
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
  * @package WordPress
- * @subpackage ittech
- * @since ittech
+ * @subpackage martech
+ * @since martech
  */
 
 
-if ( ! function_exists( 'ittech_support' ) ) :
+if ( ! function_exists( 'martech_support' ) ) :
 
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
 	 *
-	 * @since ittech 1.0
+	 * @since martech 1.0
 	 *
 	 * @return void
 	 */
-	function ittech_support() {
+	function martech_support() {
 
 		add_theme_support( 'wp-block-styles' );
 
@@ -29,65 +29,65 @@ if ( ! function_exists( 'ittech_support' ) ) :
 
 endif;
 
-add_action( 'after_setup_theme', 'ittech_support' );
+add_action( 'after_setup_theme', 'martech_support' );
 
-if ( ! function_exists( 'ittech_styles' ) ) :
+if ( ! function_exists( 'martech_styles' ) ) :
 
 	/**
 	 * Enqueue styles.
 	 *
-	 * @since ittech-Two 1.0
+	 * @since martech-Two 1.0
 	 *
 	 * @return void
 	 */
-	function ittech_styles() {
+	function martech_styles() {
 		// Register theme stylesheet.
 		$theme_version = wp_get_theme()->get( 'Version' );
 
 		$version_string = is_string( $theme_version ) ? $theme_version : false;
 		wp_register_style(
-			'ittech-style',
+			'martech-style',
 			get_template_directory_uri() . '/style.css',
 			array(),
 			$version_string
 		);
 
-		wp_enqueue_style( 'ittech-style' );
+		wp_enqueue_style( 'martech-style' );
 	}
 
 endif;
 
-add_action( 'wp_enqueue_scripts', 'ittech_styles' );
+add_action( 'wp_enqueue_scripts', 'martech_styles' );
 
 
 if ( ! isset( $content_width ) ) {
 	$content_width = 1140; 
 }
-function ittech_elementor_styles() {
+function martech_elementor_styles() {
     if ( did_action( 'elementor/loaded' ) ) {
-        wp_enqueue_style( 'ittech-elementor', get_template_directory_uri() . '/elementor.css', [], '1.0.0' );
+        wp_enqueue_style( 'martech-elementor', get_template_directory_uri() . '/elementor.css', [], '1.0.0' );
     }
 }
 
-add_action( 'wp_enqueue_scripts', 'ittech_elementor_styles' );
+add_action( 'wp_enqueue_scripts', 'martech_elementor_styles' );
 
-function ittech_register_menus() {
+function martech_register_menus() {
     register_nav_menus(
         array(
-            'menu-1' => __( 'Primary Menu', 'ittech' ),
+            'menu-1' => __( 'Primary Menu', 'martech' ),
         )
     );
 }
-add_action( 'init', 'ittech_register_menus' );
+add_action( 'init', 'martech_register_menus' );
 
 
 
-function ittech_enqueue_fonts() {
+function martech_enqueue_fonts() {
     // Add preconnect for Google Fonts
-    wp_enqueue_style( 'ittech-fonts-preconnect', 'https://fonts.gstatic.com', [], null, 'preconnect' );
+    wp_enqueue_style( 'martech-fonts-preconnect', 'https://fonts.gstatic.com', [], null, 'preconnect' );
     wp_enqueue_style( 'poppins-font', 'https://fonts.googleapis.com/css?family=Montserrat', [], null );
 }
-add_action( 'wp_enqueue_scripts', 'ittech_enqueue_fonts' );
+add_action( 'wp_enqueue_scripts', 'martech_enqueue_fonts' );
 
 
 if( is_customize_preview() && ! current_theme_supports( 'widgets' ) ) {
@@ -111,10 +111,10 @@ if ( class_exists( 'WP_Customize_Control' ) ) {
     }
 }
 
-function ittech_customize_register( $wp_customize ) {
+function martech_customize_register( $wp_customize ) {
     $wp_customize->add_section( 'header_builder_section', array(
-        'title'       => __( 'Header Builder', 'ittech' ),
-        'description' => __( 'Customize your site header here.', 'ittech' ),
+        'title'       => __( 'Header Builder', 'martech' ),
+        'description' => __( 'Customize your site header here.', 'martech' ),
         'priority'    => 30,
     ) );
 
@@ -124,7 +124,7 @@ function ittech_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'header_logo', array(
-        'label'    => __( 'Header Logo', 'ittech' ),
+        'label'    => __( 'Header Logo', 'martech' ),
         'section'  => 'header_builder_section',
         'settings' => 'header_logo',
     ) ) );
@@ -135,7 +135,7 @@ function ittech_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_background_color', array(
-        'label'    => __( 'Header Background Color', 'ittech' ),
+        'label'    => __( 'Header Background Color', 'martech' ),
         'section'  => 'header_builder_section',
         'settings' => 'header_background_color',
     ) ) );
@@ -146,7 +146,7 @@ function ittech_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_text_color', array(
-        'label'    => __( 'Header Text Color', 'ittech' ),
+        'label'    => __( 'Header Text Color', 'martech' ),
         'section'  => 'header_builder_section',
         'settings' => 'header_text_color',
     ) ) );
@@ -157,7 +157,7 @@ function ittech_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_menu_color', array(
-        'label'    => __( 'Menu Link Color', 'ittech' ),
+        'label'    => __( 'Menu Link Color', 'martech' ),
         'section'  => 'header_builder_section',
         'settings' => 'header_menu_color',
     ) ) );
@@ -168,7 +168,7 @@ function ittech_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'header_menu_hover_color', array(
-        'label'    => __( 'Menu Link Hover Color', 'ittech' ),
+        'label'    => __( 'Menu Link Hover Color', 'martech' ),
         'section'  => 'header_builder_section',
         'settings' => 'header_menu_hover_color',
     ) ) );
@@ -180,7 +180,7 @@ function ittech_customize_register( $wp_customize ) {
 
     $wp_customize->add_control( 'header_created_with_elementor', array(
         'type'    => 'checkbox',
-        'label'   => __( 'Header Created with Elementor', 'ittech' ),
+        'label'   => __( 'Header Created with Elementor', 'martech' ),
         'section' => 'header_builder_section',
         'settings' => 'header_created_with_elementor',
     ) );
@@ -191,16 +191,16 @@ function ittech_customize_register( $wp_customize ) {
     ) );
 
     $wp_customize->add_control( new WP_Customize_Redirect_Button_Control( $wp_customize, 'header_elementor_edit_button', array(
-        'label'       => __( 'Edit Header with Elementor', 'ittech' ),
+        'label'       => __( 'Edit Header with Elementor', 'martech' ),
         'section'     => 'header_builder_section',
         'input_attrs' => array(
-            'button_label' => __( 'Edit Header', 'ittech' ),
+            'button_label' => __( 'Edit Header', 'martech' ),
             'button_url'   => wp_nonce_url( admin_url( 'post.php?post=' . get_option( 'elementor_active_kit' ) . '&action=elementor' ), 'edit_elementor' ),
         ),
     ) ) );
 }
-add_action( 'customize_register', 'ittech_customize_register' );
-function ittech_customizer_controls_js() {
+add_action( 'customize_register', 'martech_customize_register' );
+function martech_customizer_controls_js() {
     ?>
     <script type="text/javascript">
         (function($) {
@@ -225,22 +225,22 @@ function ittech_customizer_controls_js() {
     </script>
     <?php
 }
-add_action( 'customize_controls_print_footer_scripts', 'ittech_customizer_controls_js' );
+add_action( 'customize_controls_print_footer_scripts', 'martech_customizer_controls_js' );
 
 
-function ittech_customize_preview_js() {
-    wp_enqueue_script( 'ittech-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '1.0', true );
+function martech_customize_preview_js() {
+    wp_enqueue_script( 'martech-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '1.0', true );
 }
-add_action( 'customize_preview_init', 'ittech_customize_preview_js' );
+add_action( 'customize_preview_init', 'martech_customize_preview_js' );
 
 
 // Sidebar Option for page and post
 
-function ittech_register_sidebars() {
+function martech_register_sidebars() {
     register_sidebar( array(
-        'name'          => __( 'Primary Sidebar', 'ittech' ),
+        'name'          => __( 'Primary Sidebar', 'martech' ),
         'id'            => 'main-sidebar',
-        'description'   => __( 'Widgets in this area will be shown in the Primary sidebar.', 'ittech' ),
+        'description'   => __( 'Widgets in this area will be shown in the Primary sidebar.', 'martech' ),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="widgettitle">',
@@ -248,45 +248,45 @@ function ittech_register_sidebars() {
     ) );
 
     register_sidebar( array(
-        'name'          => __( 'Secondary Sidebar', 'ittech' ),
+        'name'          => __( 'Secondary Sidebar', 'martech' ),
         'id'            => 'secondary-sidebar',
-        'description'   => __( 'Widgets in this area will be shown in the secondary sidebar.', 'ittech' ),
+        'description'   => __( 'Widgets in this area will be shown in the secondary sidebar.', 'martech' ),
         'before_widget' => '<div id="%1$s" class="widget %2$s">',
         'after_widget'  => '</div>',
         'before_title'  => '<h2 class="widgettitle">',
         'after_title'   => '</h2>',
     ) );
 }
-add_action( 'widgets_init', 'ittech_register_sidebars' );
-function ittech_sidebar_meta_box() {
+add_action( 'widgets_init', 'martech_register_sidebars' );
+function martech_sidebar_meta_box() {
     add_meta_box(
-        'ittech_sidebar_meta_box',       
-        __( 'Sidebar Selection', 'ittech' ), 
-        'ittech_sidebar_meta_box_callback', 
+        'martech_sidebar_meta_box',       
+        __( 'Sidebar Selection', 'martech' ), 
+        'martech_sidebar_meta_box_callback', 
         'post',        
         'side',                             
         'default'                        
     );
 }
-add_action( 'add_meta_boxes', 'ittech_sidebar_meta_box' );
+add_action( 'add_meta_boxes', 'martech_sidebar_meta_box' );
 
 
-function ittech_sidebar_meta_box_callback( $post ) {
-    $sidebar = get_post_meta( $post->ID, '_ittech_sidebar', true );
+function martech_sidebar_meta_box_callback( $post ) {
+    $sidebar = get_post_meta( $post->ID, '_martech_sidebar', true );
 
     // Retrieve custom widget areas from the correct option name
-    $custom_widget_areas = get_option( 'ittech_widget_areas', array() );
+    $custom_widget_areas = get_option( 'martech_widget_areas', array() );
 
     ?>
     <p>
-        <label for="ittech_sidebar"><?php _e( 'Select Sidebar:', 'ittech' ); ?></label>
-        <select name="ittech_sidebar" id="ittech_sidebar">
-            <option value="none" <?php selected( $sidebar, 'none' ); ?>><?php _e( 'No Sidebar', 'ittech' ); ?></option>
-            <option value="main-sidebar" <?php selected( $sidebar, 'main-sidebar' ); ?>><?php _e( 'Main Sidebar', 'ittech' ); ?></option>
-            <option value="secondary-sidebar" <?php selected( $sidebar, 'secondary-sidebar' ); ?>><?php _e( 'Secondary Sidebar', 'ittech' ); ?></option>
+        <label for="martech_sidebar"><?php _e( 'Select Sidebar:', 'martech' ); ?></label>
+        <select name="martech_sidebar" id="martech_sidebar">
+            <option value="none" <?php selected( $sidebar, 'none' ); ?>><?php _e( 'No Sidebar', 'martech' ); ?></option>
+            <option value="main-sidebar" <?php selected( $sidebar, 'main-sidebar' ); ?>><?php _e( 'Main Sidebar', 'martech' ); ?></option>
+            <option value="secondary-sidebar" <?php selected( $sidebar, 'secondary-sidebar' ); ?>><?php _e( 'Secondary Sidebar', 'martech' ); ?></option>
 
             <?php if ( ! empty( $custom_widget_areas ) ) : ?>
-                <optgroup label="<?php _e( 'Custom Widget Areas', 'ittech' ); ?>">
+                <optgroup label="<?php _e( 'Custom Widget Areas', 'martech' ); ?>">
                     <?php foreach ( $custom_widget_areas as $id => $name ) : ?>
                         <option value="<?php echo esc_attr( $id ); ?>" <?php selected( $sidebar, $id ); ?>>
                             <?php echo esc_html( $name ); ?>
@@ -300,15 +300,15 @@ function ittech_sidebar_meta_box_callback( $post ) {
 }
 
 
-function ittech_save_sidebar_meta_box_data( $post_id ) {
+function martech_save_sidebar_meta_box_data( $post_id ) {
     // Check if our nonce is set.
-    if ( ! isset( $_POST['ittech_sidebar_nonce'] ) ) {
+    if ( ! isset( $_POST['martech_sidebar_nonce'] ) ) {
         return $post_id;
     }
-    $nonce = $_POST['ittech_sidebar_nonce'];
+    $nonce = $_POST['martech_sidebar_nonce'];
 
     // Verify that the nonce is valid.
-    if ( ! wp_verify_nonce( $nonce, 'ittech_sidebar_nonce_action' ) ) {
+    if ( ! wp_verify_nonce( $nonce, 'martech_sidebar_nonce_action' ) ) {
         return $post_id;
     }
 
@@ -329,39 +329,39 @@ function ittech_save_sidebar_meta_box_data( $post_id ) {
     }
 
     // Sanitize and save the data.
-    $sidebar = sanitize_text_field( $_POST['ittech_sidebar'] );
-    update_post_meta( $post_id, '_ittech_sidebar', $sidebar );
+    $sidebar = sanitize_text_field( $_POST['martech_sidebar'] );
+    update_post_meta( $post_id, '_martech_sidebar', $sidebar );
 }
-add_action( 'save_post', 'ittech_save_sidebar_meta_box_data' );
+add_action( 'save_post', 'martech_save_sidebar_meta_box_data' );
 
 // Save the sidebar selection
-// function ittech_save_sidebar_meta_box_data( $post_id ) {
-//     if ( array_key_exists( 'ittech_sidebar', $_POST ) ) {
+// function martech_save_sidebar_meta_box_data( $post_id ) {
+//     if ( array_key_exists( 'martech_sidebar', $_POST ) ) {
 //         update_post_meta(
 //             $post_id,
-//             '_ittech_sidebar',
-//             $_POST['ittech_sidebar']
+//             '_martech_sidebar',
+//             $_POST['martech_sidebar']
 //         );
 //     }
 // }
-// add_action( 'save_post', 'ittech_save_sidebar_meta_box_data' );
+// add_action( 'save_post', 'martech_save_sidebar_meta_box_data' );
 
-function ittech_save_sidebar_selection( $post_id ) {
+function martech_save_sidebar_selection( $post_id ) {
     // Check if the sidebar is set and sanitize it before saving
-    if ( isset( $_POST['ittech_sidebar'] ) ) {
-        $sidebar = sanitize_text_field( $_POST['ittech_sidebar'] );
-        update_post_meta( $post_id, '_ittech_sidebar', $sidebar );
+    if ( isset( $_POST['martech_sidebar'] ) ) {
+        $sidebar = sanitize_text_field( $_POST['martech_sidebar'] );
+        update_post_meta( $post_id, '_martech_sidebar', $sidebar );
     }
 }
-add_action( 'save_post', 'ittech_save_sidebar_selection' );
+add_action( 'save_post', 'martech_save_sidebar_selection' );
 
 //Feature Images of post support 
 
-function ittech_theme_setup() {
+function martech_theme_setup() {
   
     add_theme_support( 'post-thumbnails' );
 }
-add_action( 'after_setup_theme', 'ittech_theme_setup' );
+add_action( 'after_setup_theme', 'martech_theme_setup' );
 
 function custom_thumbnail_size() {
     add_image_size( 'custom-thumb', 600, 400, true ); 
@@ -369,10 +369,10 @@ function custom_thumbnail_size() {
 
 add_action( 'after_setup_theme', 'custom_thumbnail_size' );
 
-function ittech_enqueue_styles() {
+function martech_enqueue_styles() {
     wp_enqueue_style( 'font-awesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css' );
 }
-add_action( 'wp_enqueue_scripts', 'ittech_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'martech_enqueue_styles' );
 
 function truncate_text($text, $word_limit = 8) {
     $words = explode(' ', $text);
@@ -401,40 +401,40 @@ function add_custom_classes_to_widgets( $params ) {
 add_filter( 'dynamic_sidebar_params', 'add_custom_classes_to_widgets' );
 
 // Add menu page for Widget Area Management in Appearance menu
-function ittech_add_widget_area_management_page() {
+function martech_add_widget_area_management_page() {
     add_theme_page(
-        __( 'Widget Area Management', 'ittech' ),    // Page title
-        __( 'Widget Areas', 'ittech' ),              // Menu title
+        __( 'Widget Area Management', 'martech' ),    // Page title
+        __( 'Widget Areas', 'martech' ),              // Menu title
         'manage_options',                            // Capability
         'widget-area-management',                    // Menu slug
-        'ittech_widget_area_management_page'         // Callback function
+        'martech_widget_area_management_page'         // Callback function
     );
 }
-add_action( 'admin_menu', 'ittech_add_widget_area_management_page' );
+add_action( 'admin_menu', 'martech_add_widget_area_management_page' );
 
 // Register settings for widget areas
-function ittech_register_widget_area_settings() {
+function martech_register_widget_area_settings() {
     register_setting(
-        'ittech_widget_area_options', // Option group
-        'ittech_widget_areas'         // Option name
+        'martech_widget_area_options', // Option group
+        'martech_widget_areas'         // Option name
     );
 }
-add_action( 'admin_init', 'ittech_register_widget_area_settings' );
+add_action( 'admin_init', 'martech_register_widget_area_settings' );
 
 // Handle the creation of new widget areas
-function ittech_add_widget_area() {
+function martech_add_widget_area() {
     if ( isset( $_POST['widget_area_name'] ) && ! empty( $_POST['widget_area_name'] ) ) {
         $widget_area_name = sanitize_text_field( $_POST['widget_area_name'] );
-        $widget_areas = get_option( 'ittech_widget_areas', array() );
+        $widget_areas = get_option( 'martech_widget_areas', array() );
         $widget_area_id = sanitize_title( $widget_area_name );
 
         if ( ! isset( $widget_areas[ $widget_area_id ] ) ) {
             $widget_areas[ $widget_area_id ] = $widget_area_name;
-            update_option( 'ittech_widget_areas', $widget_areas );
+            update_option( 'martech_widget_areas', $widget_areas );
             register_sidebar( array(
                 'name'          => $widget_area_name,
                 'id'            => $widget_area_id,
-                'description'   => sprintf( __( 'Widgets in this area will be shown in the %s.', 'ittech' ), $widget_area_name ),
+                'description'   => sprintf( __( 'Widgets in this area will be shown in the %s.', 'martech' ), $widget_area_name ),
                 'before_widget' => '<div id="%1$s" class="widget %2$s">',
                 'after_widget'  => '</div>',
                 'before_title'  => '<h2 class="widgettitle">',
@@ -445,29 +445,29 @@ function ittech_add_widget_area() {
         }
     }
 }
-add_action( 'admin_post_ittech_add_widget_area', 'ittech_add_widget_area' );
+add_action( 'admin_post_martech_add_widget_area', 'martech_add_widget_area' );
 
 // Callback function for the widget area management page
-function ittech_widget_area_management_page() {
+function martech_widget_area_management_page() {
     ?>
     <div class="wrap">
-        <h1><?php _e( 'Manage Widget Areas', 'ittech' ); ?></h1>
+        <h1><?php _e( 'Manage Widget Areas', 'martech' ); ?></h1>
         <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-            <input type="hidden" name="action" value="ittech_add_widget_area" />
+            <input type="hidden" name="action" value="martech_add_widget_area" />
             <table class="form-table">
                 <tr valign="top">
-                    <th scope="row"><?php _e( 'Widget Area Name', 'ittech' ); ?></th>
+                    <th scope="row"><?php _e( 'Widget Area Name', 'martech' ); ?></th>
                     <td><input type="text" name="widget_area_name" value="" class="regular-text" /></td>
                 </tr>
             </table>
-            <?php submit_button( __( 'Add Widget Area', 'ittech' ) ); ?>
+            <?php submit_button( __( 'Add Widget Area', 'martech' ) ); ?>
         </form>
-        <h2><?php _e( 'Existing Widget Areas', 'ittech' ); ?></h2>
+        <h2><?php _e( 'Existing Widget Areas', 'martech' ); ?></h2>
         <ul>
             <?php
-            $widget_areas = get_option( 'ittech_widget_areas', array() );
+            $widget_areas = get_option( 'martech_widget_areas', array() );
             foreach ( $widget_areas as $id => $name ) {
-                echo '<li>' . esc_html( $name ) . ' - <a href="' . esc_url( admin_url( 'widgets.php' ) ) . '">' . __( 'Manage Widgets', 'ittech' ) . '</a></li>';
+                echo '<li>' . esc_html( $name ) . ' - <a href="' . esc_url( admin_url( 'widgets.php' ) ) . '">' . __( 'Manage Widgets', 'martech' ) . '</a></li>';
             }
             ?>
         </ul>
@@ -476,13 +476,13 @@ function ittech_widget_area_management_page() {
 }
 
 // Register dynamic widget areas during theme initialization
-function ittech_register_dynamic_sidebars() {
-    $widget_areas = get_option( 'ittech_widget_areas', array() );
+function martech_register_dynamic_sidebars() {
+    $widget_areas = get_option( 'martech_widget_areas', array() );
     foreach ( $widget_areas as $id => $name ) {
         register_sidebar( array(
             'name'          => $name,
             'id'            => $id,
-            'description'   => sprintf( __( 'Widgets in this area will be shown in the %s.', 'ittech' ), $name ),
+            'description'   => sprintf( __( 'Widgets in this area will be shown in the %s.', 'martech' ), $name ),
             'before_widget' => '<div id="%1$s" class="widget %2$s">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2 class="widgettitle">',
@@ -490,29 +490,29 @@ function ittech_register_dynamic_sidebars() {
         ));
     }
 }
-add_action( 'widgets_init', 'ittech_register_dynamic_sidebars' );
+add_action( 'widgets_init', 'martech_register_dynamic_sidebars' );
 
 
 // Header footer show for page we need
 
 
-function ittech_page_visibility_meta_box() {
+function martech_page_visibility_meta_box() {
     add_meta_box(
-        'ittech_page_visibility_meta_box',
-        __( 'Page Visibility Options', 'ittech' ),
-        'ittech_page_visibility_meta_box_callback',
+        'martech_page_visibility_meta_box',
+        __( 'Page Visibility Options', 'martech' ),
+        'martech_page_visibility_meta_box_callback',
         'page',  // Only for pages
         'side',
         'default'
     );
 }
-add_action( 'add_meta_boxes', 'ittech_page_visibility_meta_box' );
+add_action( 'add_meta_boxes', 'martech_page_visibility_meta_box' );
 
-function ittech_page_visibility_meta_box_callback( $post ) {
+function martech_page_visibility_meta_box_callback( $post ) {
     // Get current settings
-    $disable_title = get_post_meta( $post->ID, '_ittech_disable_title', true );
-    $disable_header = get_post_meta( $post->ID, '_ittech_disable_header', true );
-    $disable_footer = get_post_meta( $post->ID, '_ittech_disable_footer', true );
+    $disable_title = get_post_meta( $post->ID, '_martech_disable_title', true );
+    $disable_header = get_post_meta( $post->ID, '_martech_disable_header', true );
+    $disable_footer = get_post_meta( $post->ID, '_martech_disable_footer', true );
 
     // Use default values if not set
     $disable_title = ($disable_title === '') ? 'yes' : $disable_title;
@@ -520,16 +520,16 @@ function ittech_page_visibility_meta_box_callback( $post ) {
     $disable_footer = ($disable_footer === '') ? 'yes' : $disable_footer;
     ?>
     <p>
-        <input type="checkbox" id="ittech_disable_title" name="ittech_disable_title" value="no" <?php checked( $disable_title, 'yes' ); ?> />
-        <label for="ittech_disable_title"><?php _e( 'Disable Page Title', 'ittech' ); ?></label>
+        <input type="checkbox" id="martech_disable_title" name="martech_disable_title" value="no" <?php checked( $disable_title, 'yes' ); ?> />
+        <label for="martech_disable_title"><?php _e( 'Disable Page Title', 'martech' ); ?></label>
     </p>
     <p>
-        <input type="checkbox" id="ittech_disable_header" name="ittech_disable_header" value="no" <?php checked( $disable_header, 'yes' ); ?> />
-        <label for="ittech_disable_header"><?php _e( 'Disable Header', 'ittech' ); ?></label>
+        <input type="checkbox" id="martech_disable_header" name="martech_disable_header" value="no" <?php checked( $disable_header, 'yes' ); ?> />
+        <label for="martech_disable_header"><?php _e( 'Disable Header', 'martech' ); ?></label>
     </p>
     <p>
-        <input type="checkbox" id="ittech_disable_footer" name="ittech_disable_footer" value="no" <?php checked( $disable_footer, 'yes' ); ?> />
-        <label for="ittech_disable_footer"><?php _e( 'Disable Footer', 'ittech' ); ?></label>
+        <input type="checkbox" id="martech_disable_footer" name="martech_disable_footer" value="no" <?php checked( $disable_footer, 'yes' ); ?> />
+        <label for="martech_disable_footer"><?php _e( 'Disable Footer', 'martech' ); ?></label>
     </p>
     <?php
 }
@@ -537,29 +537,29 @@ function ittech_page_visibility_meta_box_callback( $post ) {
 
 // Bottom Sidebar
 
-function ittech_add_bottom_sidebar_meta_box() {
+function martech_add_bottom_sidebar_meta_box() {
     add_meta_box(
-        'ittech_bottom_sidebar',
-        __( 'Bottom Sidebar', 'ittech' ), 
-        'ittech_bottom_sidebar_meta_box_callback', 
+        'martech_bottom_sidebar',
+        __( 'Bottom Sidebar', 'martech' ), 
+        'martech_bottom_sidebar_meta_box_callback', 
         'post', 
         'side', 
         'default' 
     );
 }
-add_action( 'add_meta_boxes', 'ittech_add_bottom_sidebar_meta_box' );
+add_action( 'add_meta_boxes', 'martech_add_bottom_sidebar_meta_box' );
 
 // Meta box display callback
-function ittech_bottom_sidebar_meta_box_callback( $post ) {
+function martech_bottom_sidebar_meta_box_callback( $post ) {
     // Retrieve saved bottom sidebar option for this post
-    $selected_sidebar = get_post_meta( $post->ID, '_ittech_bottom_sidebar', true );
+    $selected_sidebar = get_post_meta( $post->ID, '_martech_bottom_sidebar', true );
 
     // Retrieve all dynamic widget areas
-    $widget_areas = get_option( 'ittech_widget_areas', array() );
+    $widget_areas = get_option( 'martech_widget_areas', array() );
 
     // Display a dropdown of all widget areas
-    echo '<select name="ittech_bottom_sidebar">';
-    echo '<option value="custom-bottom-ads">' . __( 'Custom Bottom ads', 'ittech' ) . '</option>';
+    echo '<select name="martech_bottom_sidebar">';
+    echo '<option value="custom-bottom-ads">' . __( 'Custom Bottom ads', 'martech' ) . '</option>';
     foreach ( $widget_areas as $id => $name ) {
         echo '<option value="' . esc_attr( $id ) . '"' . selected( $selected_sidebar, $id, false ) . '>' . esc_html( $name ) . '</option>';
     }
@@ -567,56 +567,56 @@ function ittech_bottom_sidebar_meta_box_callback( $post ) {
 }
 
 // Save meta box data when the post is saved
-function ittech_save_bottom_sidebar_meta_box_data( $post_id ) {
+function martech_save_bottom_sidebar_meta_box_data( $post_id ) {
     // Check if our nonce is set and verify the nonce
-    if ( ! isset( $_POST['ittech_bottom_sidebar'] ) ) {
+    if ( ! isset( $_POST['martech_bottom_sidebar'] ) ) {
         return;
     }
 
     // Save selected sidebar
-    $selected_sidebar = sanitize_text_field( $_POST['ittech_bottom_sidebar'] );
-    update_post_meta( $post_id, '_ittech_bottom_sidebar', $selected_sidebar );
+    $selected_sidebar = sanitize_text_field( $_POST['martech_bottom_sidebar'] );
+    update_post_meta( $post_id, '_martech_bottom_sidebar', $selected_sidebar );
 }
-add_action( 'save_post', 'ittech_save_bottom_sidebar_meta_box_data' );
+add_action( 'save_post', 'martech_save_bottom_sidebar_meta_box_data' );
 
 
 
 
 
-function ittech_save_page_visibility_meta( $post_id ) {
-    if ( isset( $_POST['ittech_disable_title'] ) ) {
-        update_post_meta( $post_id, '_ittech_disable_title', 'yes' );
+function martech_save_page_visibility_meta( $post_id ) {
+    if ( isset( $_POST['martech_disable_title'] ) ) {
+        update_post_meta( $post_id, '_martech_disable_title', 'yes' );
     } else {
-        update_post_meta( $post_id, '_ittech_disable_title', 'no' );
+        update_post_meta( $post_id, '_martech_disable_title', 'no' );
     }
 
-    if ( isset( $_POST['ittech_disable_header'] ) ) {
-        update_post_meta( $post_id, '_ittech_disable_header', 'yes' );
+    if ( isset( $_POST['martech_disable_header'] ) ) {
+        update_post_meta( $post_id, '_martech_disable_header', 'yes' );
     } else {
-        update_post_meta( $post_id, '_ittech_disable_header', 'no' );
+        update_post_meta( $post_id, '_martech_disable_header', 'no' );
     }
 
-    if ( isset( $_POST['ittech_disable_footer'] ) ) {
-        update_post_meta( $post_id, '_ittech_disable_footer', 'yes' );
+    if ( isset( $_POST['martech_disable_footer'] ) ) {
+        update_post_meta( $post_id, '_martech_disable_footer', 'yes' );
     } else {
-        update_post_meta( $post_id, '_ittech_disable_footer', 'no' );
+        update_post_meta( $post_id, '_martech_disable_footer', 'no' );
     }
 }
-add_action( 'save_post', 'ittech_save_page_visibility_meta' );
+add_action( 'save_post', 'martech_save_page_visibility_meta' );
 
 
 
-function ittech_addon_register_widget_categories( $elements_manager ) {
+function martech_addon_register_widget_categories( $elements_manager ) {
     $elements_manager->add_category(
-        'a_ittech-addons',
+        'a_martech-addons',
         [
-            'title' => __( 'ITtech Addons', 'plugin-name' ),
+            'title' => __( 'Martech Addons', 'plugin-name' ),
             'icon' => 'fa fa-plug', // Optional icon for your category
         ],
         1
     );
 }
-add_action( 'elementor/elements/categories_registered', 'ittech_addon_register_widget_categories' );
+add_action( 'elementor/elements/categories_registered', 'martech_addon_register_widget_categories' );
 
 function register_post_grid_widget() {
     if ( defined( 'ELEMENTOR_VERSION' ) ) {

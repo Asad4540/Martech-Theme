@@ -1,6 +1,6 @@
 <?php
 if ( is_page() ) {
-    $display_footer = get_post_meta( get_queried_object_id(), '_ittech_display_footer', true );
+    $display_footer = get_post_meta( get_queried_object_id(), '_martech_display_footer', true );
     if ( $display_footer === 'no' ) {
         // If footer is disabled, do not render the footer
         return;
