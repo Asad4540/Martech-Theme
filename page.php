@@ -2,7 +2,7 @@
 /**
  * The template for displaying all pages
  *
- * @package ittech
+ * @package martech
  */
 
 get_header(); ?>

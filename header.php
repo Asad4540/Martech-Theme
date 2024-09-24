@@ -4,7 +4,7 @@
  *
  * Displays all of the <head> section and everything up until <div id="content">
  *
- * @package ittech
+ * @package martech
  */
 ?>
 
